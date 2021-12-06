@@ -1,1 +1,34 @@
+node{
+	
+	def mavenHome = tool name: "maven3.8.3"
+	
+	stage('CheckOutcode'){
+	git branch: 'development', credentialsId: '8e9a00ed-6857-4ebf-8e51-98b271556285', url: 'https://github.com/Subahan01/maven-web-application.git'
+	}
+	
+	stage('Build'){
+	sh "${mavenHome}/bin/mvn clean package"
+	}
+	/*
+	stage('ExectcuteSonarQubeReport'){
+	sh "${mavenHome}/bin/mvn clean sonar:sonar"
+	}
+	
+	stage('UploadArtifactsIntoNexusRepo'){
+	sh "${mavenHome}/bin/mvn deploy"
+	}
+	stage('DeployApplicationIntoTheTomcatServer'){
+	sshagent(['be108967-dbba-4b56-9b0b-6ad216d1f31a']) {
+    sh "scp -o StrictHostkeyChecking=no /var/lib/jenkins/workspace/pipeline-scriptedway/target/maven-web-application.war ec2-user@65.2.31.44:/opt/apache-tomcat-9.0.54/webapps/"
+    }
+	}
+	
+	stage('SendEmailNotification'){
+	mail bcc: '', body: '''Build Over...
+
+Regards,
+MahaboobSubhan.''', cc: 'mahaboobsubahan.midthur@gmail.com', from: '', replyTo: '', subject: 'Build Over!...', to: 'mahaboobsubahan.midthur@gmail.com'
+	}
+	*/
+	}
 
