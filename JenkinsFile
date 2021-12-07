@@ -16,7 +16,7 @@ node{
 	stage('Build'){
 	sh "${mavenHome}/bin/mvn clean package"
 	}
-	/*
+	
 	stage('ExectcuteSonarQubeReport'){
 	sh "${mavenHome}/bin/mvn clean sonar:sonar"
 	}
@@ -29,7 +29,7 @@ node{
     sh "scp -o StrictHostkeyChecking=no /var/lib/jenkins/workspace/pipeline-scriptedway/target/maven-web-application.war ec2-user@65.2.31.44:/opt/apache-tomcat-9.0.54/webapps/"
     }
 	}
-	
+	/*
 	stage('SendEmailNotification'){
 	mail bcc: '', body: '''Build Over...
 
