@@ -1,0 +1,63 @@
+pipeline{
+    
+	agent any
+	
+	tools{
+	maven 'maven3.8.3'
+	}
+	
+	options{
+	//it will add the timestamps to the output
+	timestamps()
+	//Discard old builds,, keeps only last 5 builds
+     buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5'))
+	}
+	
+	triggers{
+	//Poll SCM (This means for every min this goes to github and check for code)
+	pollSCM('* * * * *')
+	//GitHub WebHook (This means instead of going to github, Github only comes to jenkins if there is any update)
+	githubPush()
+	}
+	
+	stages{
+	
+	//Getting Code From Girhub Repo
+	 stage('CheckOutCode'){
+	 steps{
+	 git branch: 'development', credentialsId: '8e9a00ed-6857-4ebf-8e51-98b271556285', url: 'https://github.com/Subahan01/maven-web-application.git'
+	 }
+	}
+   
+   //After getting code doing Build using Maven
+   stage('Build'){
+   steps{
+   sh "mvn clean package"
+   }
+   }
+   
+   //Executing Code in SonarQube
+   stage('SonarQube Reoprt'){
+   steps{
+   sh "mvn sonar:sonar"
+   }
+   }
+   
+   //Uploading Artificates into Nexus Repo
+   stage('UploadingArtificatesIntoNexus'){
+   steps{
+   sh "mvn deploy"
+   }
+   }
+   
+   //Now Deploying the application into Tomcat Server
+   stage('DeployApplicationIntoTheTomcatServer'){
+   steps{
+	sshagent(['5f98386f-3a56-4526-99da-137b94c976a6']) {
+    sh "scp -o StrictHostkeyChecking=no /var/lib/jenkins/workspace/pipeline-scriptedway/target/maven-web-application.war ec2-user@65.2.31.44:/opt/apache-tomcat-9.0.54/webapps/"
+    }
+   }
+   }
+   } //stages Closing
+   
+   } //PipeLine Closing
