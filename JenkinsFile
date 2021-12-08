@@ -15,17 +15,21 @@ node{
 	}
 	
 	stage('Build'){
+	//After getting code doing Build using Maven
 	sh "${mavenHome}/bin/mvn clean package"
 	}
 	
 	stage('ExectcuteSonarQubeReport'){
+	//Executing Code in SonarQube
 	sh "${mavenHome}/bin/mvn clean sonar:sonar"
 	}
 	
 	stage('UploadArtifactsIntoNexusRepo'){
+	//Uploading Artificates into Nexus Repo
 	sh "${mavenHome}/bin/mvn deploy"
 	}
 	stage('DeployApplicationIntoTheTomcatServer'){
+	//Now Deploying the application into Tomcat Server
 	sshagent(['be108967-dbba-4b56-9b0b-6ad216d1f31a']) {
     sh "scp -o StrictHostkeyChecking=no /var/lib/jenkins/workspace/pipeline-scriptedway/target/maven-web-application.war ec2-user@65.2.31.44:/opt/apache-tomcat-9.0.54/webapps/"
     }
