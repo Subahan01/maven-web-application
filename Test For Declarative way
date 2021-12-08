@@ -18,8 +18,6 @@ pipeline{
 	pollSCM('* * * * *')
 	//GitHub WebHook (This means instead of going to github, Github only comes to jenkins if there is any update)
 	githubPush()
-	//Build Peridically
-	cron('* * * * *')
 	}
 	
 	stages{
