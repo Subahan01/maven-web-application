@@ -14,8 +14,8 @@ pipeline{
 	}
 	
 	triggers{
-	//Poll SCM (This means for every min this goes to github and check for code)
-	pollSCM('* * * * *')
+	/* //Poll SCM (This means for every min this goes to github and check for code)
+	pollSCM('* * * * *') */
 	//GitHub WebHook (This means instead of going to github, Github only comes to jenkins if there is any update)
 	githubPush()
 	}
