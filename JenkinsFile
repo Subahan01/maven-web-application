@@ -10,6 +10,7 @@ node{
 	def mavenHome = tool name: "maven3.8.3"
 	properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * * ')])])
 	stage('CheckOutcode'){
+	//Getting Code From Github Repo
 	git branch: 'development', credentialsId: '8e9a00ed-6857-4ebf-8e51-98b271556285', url: 'https://github.com/Subahan01/maven-web-application.git'
 	}
 	
