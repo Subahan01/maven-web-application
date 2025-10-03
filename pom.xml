@@ -23,7 +23,7 @@
 		<log4j.version>1.2.17</log4j.version>
 		<sonar.host.url>http://18.204.226.38:9000/</sonar.host.url>
         <sonar.login>squ_18037c80fd79f32a4f315e14001bb5c9a1232695</sonar.login>
-   <!-- <sonar.password>password</sonar.password> -->
+   <!-- <sonar.password>password</sonar.password> --> 
               
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -98,14 +98,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://3.110.115.184:8081/repository/wallmart-release/</url>
+	      <name>SDP Releases Nexus Repository</name>
+	      <url>http://34.229.10.21:8081/repository/SDP_Release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.110.115.184:8081/repository/wallmart-snapshot/</url>
+	      <name>SDP Snapshot Nexus Repository</name>
+	      <url>http://34.229.10.21:8081/repository/SDP_Sanpshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
