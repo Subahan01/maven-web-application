@@ -21,7 +21,7 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://54.82.108.82:9000/</sonar.host.url>
+		<sonar.host.url>http://54.242.158.23:9000/</sonar.host.url>
         <sonar.login>squ_ab0856c146c56d21d3997c7576ca2c8ac72ff249</sonar.login>
    <!-- <sonar.password>password</sonar.password> --> 
               
@@ -99,13 +99,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>SDP Releases Nexus Repository</name>
-	      <url>http://34.229.74.80:8081/repository/SDP_Release/</url>
+	      <url>http://34.227.7.121:8081/repository/SDP_Sanpshot/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>SDP Snapshot Nexus Repository</name>
-	      <url>http://34.229.74.80:8081/repository/SDP_Sanpshot/</url>
+	      <url>http://34.227.7.121:8081/repository/SDP_Release/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
